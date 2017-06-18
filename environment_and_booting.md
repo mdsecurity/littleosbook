@@ -303,8 +303,9 @@ If you saved the configuration in a file named `bochsrc.txt` then you can run
 Bochs with the following command:
 
 ~~~
-    bochs -f bochsrc.txt -q
+    bochs -f bochsrc.txt -q 
 ~~~
+*bochs loads into a breakpoint. press c to continue the boot*
 
 The flag `-f` tells Bochs to use the given configuration file and the flag `-q`
 tells Bochs to skip the interactive start menu. You should now see Bochs
