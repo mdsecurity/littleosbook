@@ -61,14 +61,14 @@ write the character A with a green foreground (2) and dark grey background (8)
 at place (0,0), the following assembly code instruction is used:
 
 ~~~ {.nasm}
-    mov [0x000B8000], 0x4128
+    mov [0x000B8000], word 0x4128
 ~~~
 
 The second cell then corresponds to row zero, column one and its address is
 therefore:
 
 ~~~
-    0x000B8000 + 16 = 0x000B8010
+    0x000B8000 + 16 bits = 0x000B8010
 ~~~
 
 Writing to the framebuffer can also be done in C by treating the address
@@ -94,8 +94,8 @@ The following code shows how this can be wrapped into a function:
      */
     void fb_write_cell(unsigned int i, char c, unsigned char fg, unsigned char bg)
     {
-        fb[i] = c;
-        fb[i + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F)
+        fb[i*2] = c;
+        fb[i*2 + 1] = ((fg & 0x0F) << 4) | (bg & 0x0F)
     }
 ~~~
 
